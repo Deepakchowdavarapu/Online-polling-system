@@ -1,0 +1,78 @@
+/* General body styling */
+body {
+    background-color: #212529; /* Dark background */
+    color: #fff; /* White text */
+    font-family: Arial, sans-serif;
+    position: relative;
+    top:20vh;
+}
+
+/* Container styling to match the first page */
+.container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #1B2A41; /* Dark navy blue background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Header styling for the title */
+h1 {
+    color: #d3d3d3; /* Light gray text */
+    margin-bottom: 20px;
+}
+
+/* Poll question input field */
+#pollQuestion {
+    background-color:grey;
+    width: 80%;
+    color: #ccc;
+    padding: 12px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    color: #212529;
+}
+
+/* Options container - dynamically adds options */
+#optionsContainer {
+    margin-bottom: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Button styling */
+button {
+    background-color: #1B2A41; /* Dark navy blue */
+    color: #fff;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 10px;
+    width: 80%; /* Set button width */
+    max-width: 400px;
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #2A3B57; /* Slightly lighter navy on hover */
+}
+
+/* Styling for 'View Polls' link */
+.nav-link {
+    display: block;
+    margin-top: 20px;
+    color: #64B5F6; /* Light blue color for the link */
+    text-decoration: none;
+}
+
+/* Hover effect for links */
+.nav-link:hover {
+    text-decoration: underline;
+}
