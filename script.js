@@ -1,35 +1,29 @@
-// DOM Elements
 const pollQuestionInput = document.getElementById('pollQuestion');
 const optionsContainer = document.getElementById('optionsContainer');
 const addOptionBtn = document.getElementById('addOptionBtn');
 const createPollBtn = document.getElementById('createPollBtn');
 const pollListContainer = document.getElementById('pollList');
 
-// Default poll
 const defaultPoll = {
     id: 'default',
     question: "What is your favorite Indian car brand?",
     options: [
         { text: "Tata", votes: 0 },
         { text: "Maruti", votes: 0 },
-        { text: "Mahindra", votes: 0 }
+        { text: "Mahindra", votes: 0 },
     ]
 };
 
-// Load polls from local storage
 let polls = JSON.parse(localStorage.getItem('polls')) || [];
 
-// Ensure default poll is always present
 function ensureDefaultPoll() {
     if (!polls.some(poll => poll.id === 'default')) {
         polls.unshift(defaultPoll);
     }
 }
 
-// Check which page we're on
 const isCreatePollPage = document.querySelector('#createPoll') !== null;
 
-// Add option input
 function addOptionInput() {
     const optionInput = document.createElement('div');
     optionInput.classList.add('option-input');
@@ -39,22 +33,17 @@ function addOptionInput() {
     `;
     optionsContainer.appendChild(optionInput);
 
-    // Add event listener to remove button
     optionInput.querySelector('.removeOptionBtn').addEventListener('click', function() {
         optionsContainer.removeChild(optionInput);
     });
 }
 
-// Create a new poll
 if (isCreatePollPage) {
-    // Add initial option inputs
     addOptionInput();
     addOptionInput();
 
-    // Add option button event listener
     addOptionBtn.addEventListener('click', addOptionInput);
 
-    // Create poll button event listener
     createPollBtn.addEventListener('click', () => {
         const question = pollQuestionInput.value.trim();
         const optionInputs = optionsContainer.querySelectorAll('input[type="text"]');
@@ -70,7 +59,6 @@ if (isCreatePollPage) {
             polls.push(newPoll);
             savePollsToLocalStorage();
 
-            // Clear input fields
             pollQuestionInput.value = '';
             optionsContainer.innerHTML = '';
             addOptionInput();
@@ -83,7 +71,6 @@ if (isCreatePollPage) {
     });
 }
 
-// Render polls with voting options and results
 function renderPolls() {
     if (!pollListContainer) return;
     
@@ -112,7 +99,6 @@ function renderPolls() {
     });
 }
 
-// Vote for an option
 function vote(pollId, optionText) {
     const poll = polls.find(p => p.id.toString() === pollId.toString());
     if (poll) {
@@ -125,13 +111,11 @@ function vote(pollId, optionText) {
     }
 }
 
-// Save polls to local storage
 function savePollsToLocalStorage() {
     ensureDefaultPoll();
     localStorage.setItem('polls', JSON.stringify(polls));
 }
 
-// Initialize the page
 if (!isCreatePollPage) {
     renderPolls();
 } else {
